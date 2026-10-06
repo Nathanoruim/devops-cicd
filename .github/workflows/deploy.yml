@@ -22,9 +22,6 @@ jobs:
       - name: Smoke Test
         run: test -f index.html
 
-      - name: Teste da Parte 2
-        run: echo "Teste da Parte 2 funcionando!"
-
       - name: Versão do Ubuntu
         run: lsb_release -a
 
@@ -34,13 +31,18 @@ jobs:
       - name: Processadores do Runner
         run: nproc
 
-      - name: Configurando Pages
-        uses: actions/configure-pages@v5
+      - name: Teste de Falha da Parte 4
+        run: comando-inexistente-parte-4
 
-      - name: Preparando Artefato
-        uses: actions/upload-pages-artifact@v4
-        with:
-          path: '.'
+  ferramenta:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Instalar Cowsay
+        run: sudo apt-get update && sudo apt-get install -y cowsay
+
+      - name: Testar Cowsay
+        run: cowsay "Olá DevOps!"
 
   deploy:
     needs: validacao
@@ -51,6 +53,17 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configurando Pages
+        uses: actions/configure-pages@v5
+
+      - name: Preparando Artefato
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: '.'
+
       - name: Deploy no GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
