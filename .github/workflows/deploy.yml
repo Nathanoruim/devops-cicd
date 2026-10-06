@@ -25,8 +25,14 @@ jobs:
       - name: Teste da Parte 2
         run: echo "Teste da Parte 2 funcionando!"
 
-      - name: Explorando o Runner
-        run: lsb_release -a && free -h && nproc
+      - name: Versão do Ubuntu
+        run: lsb_release -a
+
+      - name: Memória do Runner
+        run: free -h
+
+      - name: Processadores do Runner
+        run: nproc
 
       - name: Configurando Pages
         uses: actions/configure-pages@v5
