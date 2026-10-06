@@ -25,6 +25,9 @@ jobs:
       - name: Teste da Parte 2
         run: echo "Teste da Parte 2 funcionando!"
 
+      - name: Teste de Falha
+        run: comando-que-nao-existe
+
       - name: Explorando o Runner
         run: lsb_release -a && free -h && nproc
 
