@@ -31,8 +31,6 @@ jobs:
       - name: Processadores do Runner
         run: nproc
 
-      - name: Teste de Falha da Parte 4
-        run: comando-inexistente-parte-4
 
   ferramenta:
     runs-on: ubuntu-latest
